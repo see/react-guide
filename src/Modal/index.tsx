@@ -27,12 +27,12 @@ const Modal: React.FC<IModal> = ({
   closable,
   onClose,
   onChange,
-  stepText,
-  nextText,
-  okText,
+  stepNode,
+  next,
+  ok,
   className,
   TEXT,
-  prevText,
+  prev,
   showPreviousBtn,
   closeEle
 }) => {
@@ -59,14 +59,48 @@ const Modal: React.FC<IModal> = ({
     anchorEl,
   ]);
 
-  const _okText =
+  const _wrapperNextBtn = (onClick: () => void): React.ReactNode => {
+    return (<button
+      className={`${PREFIX}-footer-btn ${PREFIX}-footer-next-btn`}
+      onClick={onClick}
+    >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*@ts-ignore*/}
+      {TEXT('NEXT_STEP')}
+    </button>)
+  }
+
+  const _wrapperOkBtn = (onClick: () => void): React.ReactNode => {
+    return (<button
+      className={`${PREFIX}-footer-btn ${PREFIX}-footer-next-btn`}
+      onClick={onClick}
+    >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*@ts-ignore*/}
+      {TEXT('I_KNOW')}
+    </button>)
+  }
+
+  const _ok =
     stepIndex !== steps.length - 1
-      ? nextText || TEXT('NEXT_STEP')
-      : okText || TEXT('I_KNOW');
-  const _prevText = prevText || TEXT('PREV_STEP')
+      ? next || _wrapperNextBtn
+      : ok || _wrapperOkBtn;
+
+  const _wrapperPrevBtn = (onClick: () => void): React.ReactNode => {
+    return (<button
+      className={`${PREFIX}-footer-btn ${PREFIX}-footer-prev-btn`}
+      onClick={onClick}
+    >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*@ts-ignore*/}
+      {TEXT('PREV_STEP')}
+    </button>)
+  }
+
+  const _prev = prev || _wrapperPrevBtn
 
   const _stepText =
-    stepText || (TEXT('STEP_NUMBER') as (idx: number, len: number) => string);
+    stepNode || (TEXT('STEP_NUMBER') as (idx: number, len: number) => string);
 
   const calculateStyle = (): void => {
     const { placement, offset } = stepInfo;
@@ -240,7 +274,7 @@ const Modal: React.FC<IModal> = ({
             <CloseSmall className={`${PREFIX}-close-icon`} onClick={onClose} />
           ) : null}
           {/* MODAL TITLE */}
-          <div className={`${PREFIX}-title`}>{stepInfo.title}</div>
+          {stepInfo?.title && <div className={`${PREFIX}-title`}>{stepInfo.title}</div>}
           {/* MODAL CONTENT */}
           <div className={`${PREFIX}-content`}>
             {typeof stepInfo.content === 'function'
@@ -254,19 +288,9 @@ const Modal: React.FC<IModal> = ({
             </span>
             <div className={`${PREFIX}-footer-btn-group`}>
               {showPreviousBtn && stepIndex !== 0 && (
-                <button
-                  className={`${PREFIX}-footer-btn ${PREFIX}-footer-prev-btn`}
-                  onClick={handlePreviousChange}
-                >
-                  {_prevText}
-                </button>
+                _prev(handlePreviousChange)
               )}
-              <button
-                className={`${PREFIX}-footer-btn ${PREFIX}-footer-next-btn`}
-                onClick={handleNextChange}
-              >
-                {_okText}
-              </button>
+              {_ok(handleNextChange)}
             </div>
           </div>
         </div>,

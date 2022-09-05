@@ -10,27 +10,27 @@
 
 ```javascript
 /* 安装 npm or yarn */
-npm i byte-guide
-yarn add byte-guide
+npm i guide-react
+yarn add guide-react
 
 /* umd 方式引入 */
-<script src='https://unpkg.com/byte-guide/dist/index.umd.min.js'></script>
+<script src='https://unpkg.com/guide-react/dist/index.umd.min.js'></script>
 /* umd 方式引入指定版本 */
-<script src='https://unpkg.com/byte-guide@version/dist/index.umd.min.js'></script>
+<script src='https://unpkg.com/guide-react@version/dist/index.umd.min.js'></script>
 
 /* 使用 */
-import Guide from 'byte-guide'
+import Guide from 'guide-react'
 <Guide
     className='my-guide'
     localKey='uni-key'
     steps={[]}
     onClose={()=> { /* do sth */ }}
     afterStepChange={(nextIndex, nextStep)=> { /* do sth */}}
-    stepText={(stepIndex, stepCount) => `第${stepIndex}步，共${stepCount}步`}
-    nextText="下一步"
-    prevText="上一步"
+    stepNode={(stepIndex, stepCount) => `第${stepIndex}步，共${stepCount}步`}
+    next="下一步"
+    prev="上一步"
     showPreviousBtn
-    okText='我知道了'
+    ok='我知道了'
 />
 ```
 
@@ -39,22 +39,22 @@ import Guide from 'byte-guide'
 ### 组件 API
 
 | props            | 含义                                                               | propType                                 | 是否必填 | defalutValue                                                               |
-| :--------------- | :----------------------------------------------------------------- | :--------------------------------------- | :------- | :------------------------------------------------------------------------- |
+|:-----------------| :----------------------------------------------------------------- |:-----------------------------------------| :------- | :------------------------------------------------------------------------- |
 | steps            | 引导步骤，详细配置见下方                                           | array                                    | ✓        | --                                                                         |
 | localKey         | 本地缓存 key，缓存是否展示过该引导页，需确保系统内 localKey 唯一性 | string                                   | ✓        | --                                                                         |
-| expireDate       | 过期时间，大于等于该时间都不展示引导页                             | string，YYYY-mm-hh                       |          | --                                                                         |
+| expireDate       | 过期时间，大于等于该时间都不展示引导页                             | string，YYYY-mm-hh                        |          | --                                                                         |
 | closable         | 是否可以跳过引导                                                   | bool                                     |          | true                                                                       |
-| closeEle       | 自定义跳过引导的元素                                                   | string, reactNode                                     |          |  
+| closeEle         | 自定义跳过引导的元素                                                   | string, reactNode                        |          |  
 | modalClassName   | 弹窗类名                                                           | string                                   |          | --                                                                         |
 | maskClassName    | 蒙层类名                                                           | string                                   |          | --                                                                         |
 | mask             | 是否展示蒙层                                                       | bool                                     |          | false                                                                      |
 | arrow            | 弹窗是否展示箭头                                                   | bool                                     |          | true                                                                       |
 | hotspot          | 弹窗是否展示热点                                                   | bool                                     |          | false                                                                      |
-| stepText         | modal 的步骤信息文案                                               | (stepIndex, stepCount): string => {}     |          | (stepIndex, stepCount) => { return `第${stepIndex}步，共${stepCount}步`; } |
-| nextText         | modal 的'下一步'按钮文案                                           | string                                   |          | 下一步                                                                     |
-| prevText         | modal 的'上一步'按钮文案                                           | string                                   |          | 下一步                                                                     |
-| showPreviousBtn         | 是否显示'上一步'按钮                                                   | bool                                     |          | true                                                                       |
-| okText           | modal 的确认按钮文案                                               | string                                   |          | 我知道了                                                                   |
+| stepNode         | modal 的步骤信息文案                                               | (stepIndex, stepCount): ReactNode => {}     |          | (stepIndex, stepCount) => { return `第${stepIndex}步，共${stepCount}步`; } |
+| next             | modal 的'下一步'按钮文案                                           | ReactNode                                |          | 下一步                                                                     |
+| prev             | modal 的'上一步'按钮文案                                           | ReactNode                                   |          | 下一步                                                                     |
+| showPreviousBtn  | 是否显示'上一步'按钮                                                   | bool                                     |          | true                                                                       |
+| ok               | modal 的确认按钮文案                                               | ReactNode                                   |          | 我知道了                                                                   |
 | visible          | 控制 guide 显示隐藏，用于异步渲染                                  | bool                                     |          | true                                                                       |
 | lang             | 多语言                                                             | 'zh' ,'en' , 'ja'                        |          | 'zh'                                                                       |
 | step             | 初始步骤，步骤可受控，为-1 则不展示组件                            | number                                   |          | 0                                                                          |

@@ -28,10 +28,10 @@ const Guide: React.FC<IGuide> = (props) => {
     beforeStepChange,
     afterStepChange,
     onClose,
-    stepText,
-    prevText,
-    nextText,
-    okText,
+    stepNode,
+    prev,
+    next,
+    ok,
     lang = 'zh',
     showPreviousBtn = false,
     closeEle,
@@ -200,10 +200,10 @@ const Guide: React.FC<IGuide> = (props) => {
         closeEle={closeEle}
         onClose={handleClose}
         onChange={handleChange}
-        stepText={stepText}
-        prevText={prevText}
-        nextText={nextText}
-        okText={okText}
+        stepNode={stepNode}
+        prev={prev}
+        next={next}
+        ok={ok}
         className={modalClassName}
         TEXT={i18nTEXT}
         showPreviousBtn={showPreviousBtn}

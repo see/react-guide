@@ -8,19 +8,19 @@ When we onboard new users or ship new features, how do we make sure that our aud
 
 ```javascript
 /* install via npm or yarn */
-npm i byte-guide
-yarn add byte-guide
+npm i guide-react
+yarn add guide-react
 
 /* load via umd */
-<script src='https://unpkg.com/byte-guide/dist/index.umd.min.js'></script>
+<script src='https://unpkg.com/guide-react/dist/index.umd.min.js'></script>
 /* load via umd and specified version */
-<script src='https://unpkg.com/byte-guide@version/dist/index.umd.min.js'></script>
+<script src='https://unpkg.com/guide-react@version/dist/index.umd.min.js'></script>
 ```
 
 ## Usage
 
 ```javascript
-import Guide from 'byte-guide';
+import Guide from 'guide-react';
 <Guide
   steps={[]}
   localKey="uni-key"
@@ -39,11 +39,11 @@ import Guide from 'byte-guide';
     /* do sth */
   }}
   /* customize footers */
-  stepText={(stepIndex, stepCount) => `Step ${stepIndex} of ${stepCount}`}
-  nextText="Next"
-  prevText="Previous"
+  stepNode={(stepIndex, stepCount) => `Step ${stepIndex} of ${stepCount}`}
+  next="Next"
+  prev="Previous"
   showPreviousBtn
-  okText="Finish"
+  ok="Finish"
 />;
 ```
 
@@ -52,22 +52,22 @@ import Guide from 'byte-guide';
 ### Component API's
 
 | props                 | definition                                                                                                           | type                                     | required | defalut value                                                 |
-| :-------------------- | :------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- | :------- | :------------------------------------------------------------ |
+|:----------------------| :------------------------------------------------------------------------------------------------------------------- |:-----------------------------------------| :------- | :------------------------------------------------------------ |
 | steps                 | An array of info of each step of the onboarding sequence                                                             | IStep[]                                  | ✓        | --                                                            |
 | localKey              | A unique key that will be stored in localStorage to indicate if the guide has finished                               | string                                   | ✓        | --                                                            |
-| expireDate            | The expire date of the guide when it will not be displayed anymore                                                   | string，YYYY-mm-hh                       |          | --                                                            |
+| expireDate            | The expire date of the guide when it will not be displayed anymore                                                   | string，YYYY-mm-hh                        |          | --                                                            |
 | closable              | If the guide can be closed before the last step. If false, the close button `x` will not be displayed on each modal. | bool                                     |          | true                                                          |
-| closeEle       | Customize the element that skips the guide                                                   | string, reactNode                                     |          |  
+| closeEle              | Customize the element that skips the guide                                                   | string, reactNode                        |          |  
 | modalClassName        | The class name of the modal                                                                                          | string                                   |          | --                                                            |
 | maskClassName         | The class name of the mask                                                                                           | string                                   |          | --                                                            |
 | mask                  | Whether or not to display the mask                                                                                   | bool                                     |          | false                                                         |
 | arrow                 | Whether or not to display the arrow                                                                                  | bool                                     |          | true                                                          |
 | hotspot               | Whether or not to display the hotspot                                                                                | bool                                     |          | false                                                         |
-| stepText              | The custom text for the step info                                                                                    | (stepIndex, stepCount): string => {}     |          | (stepIndex, stepCount) => `Step ${stepIndex} of ${stepCount}` |
-| nextText              | The custom text for the `Next Step` button                                                                           | string                                   |          | Next                                                          |
-| prevText              | The custom text for the `Previous step` button                                                                           | string                                   |          | Previous                                                      |
-| showPreviousBtn     | Whether or not to display the previous button                                             | bool                                     |          | true                                                          |
-| okText                | The custom text for the confirm button at the last step                                                              | string                                   |          | I know                                                        |
+| stepNode              | The custom text for the step info                                                                                    | (stepIndex, stepCount): ReactNode => {}  |          | (stepIndex, stepCount) => `Step ${stepIndex} of ${stepCount}` |
+| next                  | The custom text for the `Next Step` button                                                                           | ReactNode                                   |          | Next                                                          |
+| prev                  | The custom text for the `Previous step` button                                                                           | ReactNode                                   |          | Previous                                                      |
+| showPreviousBtn       | Whether or not to display the previous button                                             | bool                                     |          | true                                                          |
+| ok                    | The custom text for the confirm button at the last step                                                              | ReactNode                                   |          | I know                                                        |
 | visible               | If the guide is visible                                                                                              | bool                                     |          | true                                                          |
 | lang                  | The language of use                                                                                                  | 'zh' &#124; 'en' &#124; 'ja'             |          | 'zh'                                                          |
 | step                  | The first step's number                                                                                              | number                                   |          | 0                                                             |

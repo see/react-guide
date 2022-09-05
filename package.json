@@ -1,15 +1,15 @@
 {
-  "name": "byte-guide",
-  "version": "1.0.7",
+  "name": "guide-react",
+  "version": "0.0.0-alpha.0",
   "description": "New feature guide",
   "keywords": [
     "guide",
     "react"
   ],
-  "homepage": "https://github.com/bytedance/guide",
+  "homepage": "https://github.com/see/react-guide",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bytedance/guide"
+    "url": "https://github.com/see/react-guide"
   },
   "scripts": {
     "start": "dumi dev",

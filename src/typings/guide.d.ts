@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { StepNumber } from '../constant/lang';
 
 export type SinglePlacement = 'top' | 'bottom' | 'left' | 'right';
@@ -18,7 +19,7 @@ export type Placement =
 
 export type SelectorType = string | Element | (() => Element);
 
-export type ContentType = string | React.ReactNode | (() => React.ReactNode);
+export type ContentType = string | ReactNode | (() => ReactNode);
 
 export interface ITargetPos {
   left: number;
@@ -79,14 +80,14 @@ export interface IGuide {
   visible?: boolean;
   /* The language of use */
   lang?: 'zh' | 'en' | 'ja';
-  /* The custom text for the step info */
-  stepText?: (stepIndex: number, stepCount: number) => string;
+  /* The custom node for the step info */
+  stepNode?: (stepIndex: number, stepCount: number) => ReactNode;
   /* The custom text for the `Previous Step` button */
-  prevText?: string;
+  prev?: (onClick: () => void) => ReactNode;
   /* The custom text for the `Next Step` button */
-  nextText?: string;
+  next?: (onClick: () => void) => ReactNode;
   /* The custom text for the confirm button at the last step */
-  okText?: string;
+  ok?: (onClick: () => void) => ReactNode;
   /* The callback function when the user is about to move to the next step */
   beforeStepChange?: (stepIndex: number, step: IStep) => void;
   /* The callback function when the step changes */
@@ -113,11 +114,11 @@ export interface IModal {
   closeEle?: JSX.Element;
   onClose: () => void;
   onChange: (direction: number) => void;
-  stepText?: (stepIndex: number, stepCount: number) => string;
+  stepNode?: (stepIndex: number, stepCount: number) => ReactNode;
   showPreviousBtn: boolean;
-  nextText?: string;
-  prevText?: string;
-  okText?: string;
+  next?: (onClick: () => void) => ReactNode;
+  prev?: (onClick: () => void) => ReactNode;
+  ok?: (onClick: () => void) => ReactNode;
   className?: string;
   TEXT: (key: 'NEXT_STEP' | 'I_KNOW' | 'STEP_NUMBER' | 'PREV_STEP') => string | StepNumber;
 }
