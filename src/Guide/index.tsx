@@ -31,9 +31,11 @@ const Guide: React.FC<IGuide> = (props) => {
     stepNode,
     prev,
     next,
+    skip,
     ok,
     lang = 'zh',
     showPreviousBtn = false,
+    showSkipBtn = false,
     closeEle,
   } = props;
 
@@ -203,10 +205,12 @@ const Guide: React.FC<IGuide> = (props) => {
         stepNode={stepNode}
         prev={prev}
         next={next}
+        skip={skip}
         ok={ok}
         className={modalClassName}
         TEXT={i18nTEXT}
         showPreviousBtn={showPreviousBtn}
+        showSkipBtn={showSkipBtn}
       />
     </>
   ) : null;

@@ -29,11 +29,13 @@ const Modal: React.FC<IModal> = ({
   onChange,
   stepNode,
   next,
+  skip,
   ok,
   className,
   TEXT,
   prev,
   showPreviousBtn,
+  showSkipBtn,
   closeEle
 }) => {
   const stepInfo = steps[stepIndex];
@@ -98,6 +100,19 @@ const Modal: React.FC<IModal> = ({
   }
 
   const _prev = prev || _wrapperPrevBtn
+
+  const _wrapperSkipBtn = (onClick: () => void): React.ReactNode => {
+    return (<button
+      className={`${PREFIX}-footer-btn ${PREFIX}-footer-skip-btn`}
+      onClick={onClick}
+    >
+      {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+      {/*@ts-ignore*/}
+      {TEXT('SKIP_STEP')}
+    </button>)
+  }
+
+  const _skip = skip || _wrapperSkipBtn
 
   const _stepText =
     stepNode || (TEXT('STEP_NUMBER') as (idx: number, len: number) => string);
@@ -289,6 +304,9 @@ const Modal: React.FC<IModal> = ({
             <div className={`${PREFIX}-footer-btn-group`}>
               {showPreviousBtn && stepIndex !== 0 && (
                 _prev(handlePreviousChange)
+              )}
+              {showSkipBtn && stepIndex !== (steps.length - 1) && (
+                _skip(onClose)
               )}
               {_ok(handleNextChange)}
             </div>

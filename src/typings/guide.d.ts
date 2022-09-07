@@ -84,6 +84,8 @@ export interface IGuide {
   stepNode?: (stepIndex: number, stepCount: number) => ReactNode;
   /* The custom text for the `Previous Step` button */
   prev?: (onClick: () => void) => ReactNode;
+  /* The custom text for the `Skip` button */
+  skip?: (onClick: () => void) => ReactNode;
   /* The custom text for the `Next Step` button */
   next?: (onClick: () => void) => ReactNode;
   /* The custom text for the confirm button at the last step */
@@ -96,6 +98,8 @@ export interface IGuide {
   onClose?: () => void;
   /* Whether or not to display the previous button */
   showPreviousBtn?: boolean;
+  /* Whether or not to display the skip button */
+  showSkipBtn?: boolean;
   /* close element */
   closeEle?: JSX.Element;
 }
@@ -116,9 +120,11 @@ export interface IModal {
   onChange: (direction: number) => void;
   stepNode?: (stepIndex: number, stepCount: number) => ReactNode;
   showPreviousBtn: boolean;
+  showSkipBtn?: boolean;
   next?: (onClick: () => void) => ReactNode;
   prev?: (onClick: () => void) => ReactNode;
+  skip?: (onClick: () => void) => ReactNode;
   ok?: (onClick: () => void) => ReactNode;
   className?: string;
-  TEXT: (key: 'NEXT_STEP' | 'I_KNOW' | 'STEP_NUMBER' | 'PREV_STEP') => string | StepNumber;
+  TEXT: (key: 'NEXT_STEP' | 'I_KNOW' | 'STEP_NUMBER' | 'PREV_STEP' | 'SKIP_STEP') => string | StepNumber;
 }

@@ -19,6 +19,11 @@ const LANGUAGES = {
     en: 'Previous step',
     ja: '前へ',
   },
+  SKIP_STEP: {
+    zh: '跳过',
+    en: 'Skip',
+    ja: '飛び越える',
+  },
 };
 
 type languages = typeof LANGUAGES;
