@@ -1,15 +1,15 @@
 {
   "name": "guide-react",
-  "version": "0.0.0-alpha.1",
+  "version": "0.0.1",
   "description": "New feature guide",
   "keywords": [
     "guide",
     "react"
   ],
-  "homepage": "https://github.com/see/react-guide",
+  "homepage": "https://github.com/kimmy214/react-guide",
   "repository": {
     "type": "git",
-    "url": "https://github.com/see/react-guide"
+    "url": "https://github.com/kimmy214/react-guide"
   },
   "scripts": {
     "start": "dumi dev",

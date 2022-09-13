@@ -38,29 +38,31 @@ import Guide from 'guide-react'
 
 ### 组件 API
 
-| props            | 含义                                                               | propType                                 | 是否必填 | defalutValue                                                               |
-|:-----------------| :----------------------------------------------------------------- |:-----------------------------------------| :------- | :------------------------------------------------------------------------- |
-| steps            | 引导步骤，详细配置见下方                                           | array                                    | ✓        | --                                                                         |
-| localKey         | 本地缓存 key，缓存是否展示过该引导页，需确保系统内 localKey 唯一性 | string                                   | ✓        | --                                                                         |
-| expireDate       | 过期时间，大于等于该时间都不展示引导页                             | string，YYYY-mm-hh                        |          | --                                                                         |
-| closable         | 是否可以跳过引导                                                   | bool                                     |          | true                                                                       |
-| closeEle         | 自定义跳过引导的元素                                                   | string, reactNode                        |          |  
-| modalClassName   | 弹窗类名                                                           | string                                   |          | --                                                                         |
-| maskClassName    | 蒙层类名                                                           | string                                   |          | --                                                                         |
-| mask             | 是否展示蒙层                                                       | bool                                     |          | false                                                                      |
-| arrow            | 弹窗是否展示箭头                                                   | bool                                     |          | true                                                                       |
-| hotspot          | 弹窗是否展示热点                                                   | bool                                     |          | false                                                                      |
-| stepNode         | modal 的步骤信息文案                                               | (stepIndex, stepCount): ReactNode => {}     |          | (stepIndex, stepCount) => { return `第${stepIndex}步，共${stepCount}步`; } |
-| next             | modal 的'下一步'按钮文案                                           | ReactNode                                |          | 下一步                                                                     |
-| prev             | modal 的'上一步'按钮文案                                           | ReactNode                                   |          | 下一步                                                                     |
-| showPreviousBtn  | 是否显示'上一步'按钮                                                   | bool                                     |          | true                                                                       |
-| ok               | modal 的确认按钮文案                                               | ReactNode                                   |          | 我知道了                                                                   |
-| visible          | 控制 guide 显示隐藏，用于异步渲染                                  | bool                                     |          | true                                                                       |
-| lang             | 多语言                                                             | 'zh' ,'en' , 'ja'                        |          | 'zh'                                                                       |
-| step             | 初始步骤，步骤可受控，为-1 则不展示组件                            | number                                   |          | 0                                                                          |
-| afterStepChange  | 点击下一步的回调                                                   | (nextIndex, nextStep): void=>{}          |          | --                                                                         |
-| beforeStepChange | 点击下一步之前的回调                                               | (stepIndex: number, step: IStep) => void |          | --                                                                         |
-| onClose          | 引导结束的回调                                                     | ():void=> {}                             |          | --                                                                         |
+| props            | 含义                                       | propType                                 | 是否必填 | defalutValue                                                          |
+|:-----------------|:-----------------------------------------|:-----------------------------------------| :------- |:----------------------------------------------------------------------|
+| steps            | 引导步骤，详细配置见下方                             | array                                    | ✓        | --                                                                    |
+| localKey         | 本地缓存 key，缓存是否展示过该引导页，需确保系统内 localKey 唯一性 | string                                   | ✓        | --                                                                    |
+| expireDate       | 过期时间，大于等于该时间都不展示引导页                      | string，YYYY-mm-hh                        |          | --                                                                    |
+| closable         | 是否可以跳过引导                                 | bool                                     |          | true                                                                  |
+| closeEle         | 自定义跳过引导的元素                               | string, reactNode                        |          |  
+| modalClassName   | 弹窗类名                                     | string                                   |          | --                                                                    |
+| maskClassName    | 蒙层类名                                     | string                                   |          | --                                                                    |
+| mask             | 是否展示蒙层                                   | bool                                     |          | false                                                                 |
+| arrow            | 弹窗是否展示箭头                                 | bool                                     |          | true                                                                  |
+| hotspot          | 弹窗是否展示热点                                 | bool                                     |          | false                                                                 |
+| stepNode         | modal 的步骤信息文案                            | (stepIndex, stepCount): ReactNode => {}     |          | (stepIndex, stepCount) => { return `第${stepIndex}步，共${stepCount}步`; } |
+| next             | modal 的'下一步'按钮文案                         | ReactNode                                |          | 下一步                                                                   |
+| prev             | modal 的'上一步'按钮文案                         | ReactNode                                   |          | 下一步                                                                   |
+| skip             | modal 的'跳过'按钮文案                          | ReactNode                                   |          | 跳过                                                                    |
+| showPreviousBtn  | 是否显示'上一步'按钮                              | bool                                     |          | false                                                                  |
+| showSkipBtn      | 是否显示'跳过'按钮                              | bool                                     |          | false                                                                 |
+| ok               | modal 的确认按钮文案                            | ReactNode                                   |          | 我知道了                                                                  |
+| visible          | 控制 guide 显示隐藏，用于异步渲染                     | bool                                     |          | true                                                                  |
+| lang             | 多语言                                      | 'zh' ,'en' , 'ja'                        |          | 'zh'                                                                  |
+| step             | 初始步骤，步骤可受控，为-1 则不展示组件                    | number                                   |          | 0                                                                     |
+| afterStepChange  | 点击下一步的回调                                 | (nextIndex, nextStep): void=>{}          |          | --                                                                    |
+| beforeStepChange | 点击下一步之前的回调                               | (stepIndex: number, step: IStep) => void |          | --                                                                    |
+| onClose          | 引导结束的回调                                  | ():void=> {}                             |          | --                                                                    |
 
 ### steps
 
