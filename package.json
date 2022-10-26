@@ -51,7 +51,7 @@
     "@babel/preset-typescript": "^7.12.7",
     "@typescript-eslint/eslint-plugin": "^4.14.1",
     "@typescript-eslint/parser": "^4.14.1",
-    "@umijs/test": "^3.0.5",
+    "@umijs/test": "^4.0.0",
     "dumi": "^1.0.10",
     "eslint": "^7.18.0",
     "eslint-config-standard": "^16.0.2",
